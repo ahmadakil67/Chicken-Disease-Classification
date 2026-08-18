@@ -216,3 +216,21 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Environment
+cnncls/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Dataset
+data/
+*.zip
+
+# Generated artifacts
+artifacts/
+
+# Secrets
+.env
