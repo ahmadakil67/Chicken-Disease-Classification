@@ -1,43 +1,32 @@
 # Chicken Disease Classification
 
-An end-to-end deep learning project for classifying chicken fecal images into three health categories using **VGG16 transfer learning**, **TensorFlow/Keras**, **Azure Blob Storage**, and a **Flask web application**.
+[![Python](https://img.shields.io/badge/Python-3.8-blue.svg)](https://www.python.org/)
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-Keras-orange.svg)](https://www.tensorflow.org/)
+[![Flask](https://img.shields.io/badge/Flask-Web%20App-black.svg)](https://flask.palletsprojects.com/)
+[![Docker](https://img.shields.io/badge/Docker-Containerized-2496ED.svg)](https://www.docker.com/)
+[![Azure](https://img.shields.io/badge/Microsoft%20Azure-Deployed-0078D4.svg)](https://azure.microsoft.com/)
+[![CI/CD](https://github.com/ahmadakil67/Chicken-Disease-Classification/actions/workflows/cicd.yaml/badge.svg)](https://github.com/ahmadakil67/Chicken-Disease-Classification/actions/workflows/cicd.yaml)
 
-The project is organized as a reusable machine learning pipeline covering data ingestion, base-model preparation, model training, evaluation, and image prediction.
+An end-to-end deep learning project for classifying chicken fecal images into three health categories using **VGG16 transfer learning**, **TensorFlow/Keras**, **Azure Blob Storage**, **Flask**, **Docker**, **Azure Container Registry**, **Azure App Service**, and **GitHub Actions CI/CD**.
+
+The repository follows a modular, configuration-driven machine learning pipeline covering data ingestion, base-model preparation, training, evaluation, prediction, containerization, and cloud deployment.
+
+> **Disclaimer:** This project is intended for educational and research purposes. It is not a substitute for veterinary diagnosis or professional animal-health advice.
+
+---
+
+## Live Application
+
+The application is deployed on Microsoft Azure App Service:
+
+**Live URL:**  
+https://chicken-disease-2026-aqbug7egfnb6dydd.indiasouthcentral-01.azurewebsites.net
 
 ---
 
 ## Overview
 
-Poultry health monitoring can benefit from automated image-based screening tools. This project trains a convolutional neural network to classify chicken fecal images into:
-
-- **Coccidiosis**
-- **Healthy**
-- **Salmonella**
-
-The model uses a pretrained **VGG16** backbone with ImageNet weights. The convolutional base is frozen and a custom three-class classification layer is trained on the project dataset.
-
-> **Important:** This project is intended for educational/research use and is not a substitute for veterinary diagnosis.
-
----
-
-## Key Features
-
-- Three-class chicken disease classification
-- Transfer learning with pretrained **VGG16**
-- Azure Blob Storage based dataset ingestion
-- Automatic ZIP download and extraction
-- Image augmentation during training
-- Reusable configuration-driven training pipeline
-- Model evaluation with loss and accuracy reporting
-- JSON-based evaluation output
-- Flask web application for image prediction
-- Modular project structure suitable for MLOps-style workflows
-
----
-
-## Model Classes
-
-The project currently uses the following class mapping:
+Automated image classification can support research into faster poultry-health screening. This project trains a convolutional neural network to classify chicken fecal images into three categories:
 
 | Class Index | Class |
 |---:|---|
@@ -45,42 +34,117 @@ The project currently uses the following class mapping:
 | 1 | Healthy |
 | 2 | Salmonella |
 
-The class order is produced alphabetically by Keras `flow_from_directory()`.
+The model uses a pretrained **VGG16** backbone with ImageNet weights. The convolutional feature extractor is frozen and a custom three-class softmax classifier is trained on the project dataset.
+
+The class order is derived alphabetically by Keras `flow_from_directory()`.
 
 ---
 
-## Project Architecture
+## Key Features
+
+- Three-class chicken disease classification
+- Transfer learning with pretrained **VGG16**
+- TensorFlow/Keras training and inference pipeline
+- Azure Blob Storage based dataset ingestion
+- Automatic ZIP download and extraction
+- Image augmentation during training
+- Configuration-driven ML workflow
+- Model evaluation with loss and accuracy reporting
+- JSON-based evaluation output
+- Flask web application for image upload and prediction
+- Dockerized application
+- Azure Container Registry image hosting
+- Azure App Service container deployment
+- GitHub Actions based CI/CD
+- Passwordless Azure authentication through GitHub OIDC
+- Commit-specific Docker image tagging for traceable deployments
+- Modular project structure suitable for MLOps-style workflows
+
+---
+
+## System Architecture
 
 ```text
-Azure Blob Storage
-        |
-        v
-   Data Ingestion
-        |
-        v
-Download data.zip
-        |
-        v
- Extract Dataset
-        |
-        v
-Prepare VGG16 Base Model
-        |
-        v
-   Model Training
-        |
-        v
- Model Evaluation
-        |
-        v
- artifacts/training/model.h5
-        |
-        v
- Prediction Pipeline
-        |
-        v
-    Flask Web App
+                         TRAINING PIPELINE
+                         -----------------
+
+                    Azure Blob Storage
+                            |
+                            v
+                      Data Ingestion
+                            |
+                            v
+                 Download + Extract ZIP
+                            |
+                            v
+                 Prepare VGG16 Base Model
+                            |
+                            v
+                       Model Training
+                            |
+                            v
+                      Model Evaluation
+                            |
+                            v
+               artifacts/training/model.h5
+                            |
+                            v
+                    Prediction Pipeline
+                            |
+                            v
+                      Flask Web App
+
+
+                         DEPLOYMENT PIPELINE
+                         -------------------
+
+Developer
+   |
+   | git push origin main
+   v
+GitHub Repository
+   |
+   v
+GitHub Actions
+   |
+   +--> Continuous Integration
+   |
+   +--> Docker Image Build
+   |
+   +--> Push Image to Azure Container Registry
+   |
+   +--> Update Azure App Service Site Container
+   |        target port: 8080
+   |
+   v
+Azure App Service
+   |
+   v
+Live Web Application
 ```
+
+---
+
+## Technology Stack
+
+| Area | Technology |
+|---|---|
+| Language | Python 3.8 |
+| Deep Learning | TensorFlow / Keras |
+| Backbone | VGG16 |
+| Image Processing | TensorFlow / NumPy |
+| Web Framework | Flask |
+| API Support | Flask-CORS |
+| Data Storage | Azure Blob Storage |
+| Configuration | YAML / PyYAML |
+| Environment Variables | python-dotenv |
+| Containerization | Docker |
+| Container Registry | Azure Container Registry |
+| Cloud Hosting | Azure App Service for Linux |
+| CI/CD | GitHub Actions |
+| Cloud Authentication | GitHub OIDC + Microsoft Entra ID |
+| Version Control | Git / GitHub |
+| Environment Management | Conda |
 
 ---
 
@@ -90,6 +154,8 @@ Prepare VGG16 Base Model
 Chicken-Disease-Classification/
 |
 |-- .github/
+|   `-- workflows/
+|       `-- cicd.yaml
 |
 |-- artifacts/
 |   |-- data_ingestion/
@@ -148,16 +214,17 @@ Chicken-Disease-Classification/
 |-- templates/
 |   `-- index.html
 |
-|-- .env
+|-- Dockerfile
 |-- .gitignore
 |-- app.py
 |-- main.py
 |-- params.yaml
+|-- requirements.txt
 |-- scores.json
 `-- README.md
 ```
 
-> Some generated files and folders may only appear after the corresponding pipeline stage has run.
+> Some generated artifacts only appear after the corresponding pipeline stage has run. Local `.env` files must remain untracked.
 
 ---
 
@@ -173,60 +240,46 @@ artifacts/data_ingestion/Chicken Disease/
 `-- Salmonella/
 ```
 
-Keras uses these directory names to infer the target classes.
+Keras uses these folder names to infer target classes.
 
 ---
 
-## Technology Stack
+# Machine Learning Pipeline
 
-- **Python 3.8**
-- **TensorFlow / Keras**
-- **VGG16**
-- **NumPy**
-- **Flask**
-- **Flask-CORS**
-- **Azure Blob Storage**
-- **PyYAML**
-- **python-dotenv**
-- **Conda**
-- **Git / GitHub**
-
----
-
-## Machine Learning Pipeline
-
-### 1. Data Ingestion
+## 1. Data Ingestion
 
 The data ingestion stage:
 
-1. Reads Azure Blob Storage configuration.
-2. Connects to the configured Azure Storage container.
+1. Reads the project configuration.
+2. Connects to the configured Azure Blob Storage container.
 3. Downloads `data.zip`.
-4. Stores it under `artifacts/data_ingestion/`.
-5. Extracts the dataset for subsequent stages.
+4. Saves it under `artifacts/data_ingestion/`.
+5. Extracts the dataset for downstream stages.
 
-Azure may download the blob in multiple byte ranges. HTTP `206 Partial Content` responses in the logs are normal during chunked downloads.
+Azure Blob Storage may transfer the file in byte ranges. HTTP `206 Partial Content` responses can therefore appear during chunked downloads and are not necessarily errors.
 
-### 2. Prepare Base Model
+---
 
-The project uses:
+## 2. Prepare Base Model
+
+The model is based on:
 
 ```text
 VGG16
 + ImageNet pretrained weights
 + include_top=False
-+ input size 224 x 224 x 3
++ input shape = 224 x 224 x 3
 ```
 
-The pretrained convolutional layers are frozen and a new softmax classification layer is added for the three target classes.
+The pretrained convolutional layers are frozen and a three-class softmax output layer is added:
 
-Current model output:
-
-```text
+```python
 Dense(3, activation="softmax")
 ```
 
-### 3. Training
+---
+
+## 3. Training
 
 Images are resized to:
 
@@ -234,7 +287,7 @@ Images are resized to:
 224 x 224
 ```
 
-The training pipeline supports image augmentation such as:
+The training pipeline supports augmentation such as:
 
 - Rotation
 - Horizontal flipping
@@ -243,17 +296,17 @@ The training pipeline supports image augmentation such as:
 - Shearing
 - Zooming
 
-The corrected VGG16 training pipeline uses:
+VGG16 preprocessing is performed with:
 
 ```python
 tf.keras.applications.vgg16.preprocess_input
 ```
 
-for image preprocessing.
+The current workflow uses a **20% validation split**.
 
-A validation split of **20%** is used.
+---
 
-### 4. Evaluation
+## 4. Evaluation
 
 The evaluation stage loads:
 
@@ -261,15 +314,15 @@ The evaluation stage loads:
 artifacts/training/model.h5
 ```
 
-and evaluates it using the same VGG16 preprocessing and validation split configuration used during training.
+and evaluates the model using the same VGG16 preprocessing configuration.
 
-Evaluation results are saved to:
+Results are stored in:
 
 ```text
 scores.json
 ```
 
-Latest recorded result:
+Latest recorded result from the project:
 
 ```json
 {
@@ -280,15 +333,30 @@ Latest recorded result:
 
 This corresponds to approximately **94.87% validation accuracy**.
 
-> This score is currently based on a validation split from the same dataset rather than a fully independent held-out test set. A separate test set is recommended for final model assessment.
+> The recorded score is based on a validation split from the same dataset, not a fully independent held-out test set. A separate test set should be used for final model assessment.
 
 ---
 
-## Configuration
+## Current Performance
 
-### `params.yaml`
+| Metric | Value |
+|---|---:|
+| Validation Accuracy | **94.87%** |
+| Validation Loss | **1.4880** |
+| Number of Classes | **3** |
+| Input Shape | **224 x 224 x 3** |
+| Backbone | **VGG16** |
+| Pretrained Weights | **ImageNet** |
 
-Example configuration:
+Accuracy should not be treated as the only measure of model quality. Future evaluation should also include class-wise precision, recall, F1-score, a confusion matrix, and testing on unseen real-world images.
+
+---
+
+# Configuration
+
+## `params.yaml`
+
+Example:
 
 ```yaml
 AUGMENTATION: True
@@ -301,17 +369,13 @@ WEIGHTS: imagenet
 LEARNING_RATE: 0.001
 ```
 
-For machines with limited RAM/VRAM, reducing `BATCH_SIZE` to `4` or `8` may help.
+For systems with limited memory, reducing `BATCH_SIZE` to `4` or `8` may help.
 
-### `config/config.yaml`
+---
 
-The main configuration defines paths for:
+## `config/config.yaml`
 
-- Data ingestion
-- Azure Blob data
-- Base model
-- Updated base model
-- Trained model
+The main configuration defines paths and data-ingestion settings.
 
 Example:
 
@@ -337,63 +401,52 @@ training:
 
 ---
 
-## Azure Blob Storage Setup
+# Azure Blob Storage Setup
 
-The project reads the Azure Storage connection string from an environment variable.
+The application reads the Azure Storage connection string from an environment variable.
 
-Create a `.env` file in the project root:
+Create a local `.env` file in the project root:
 
 ```env
 AZURE_STORAGE_CONNECTION_STRING="YOUR_AZURE_STORAGE_CONNECTION_STRING"
 ```
 
-### Security
+Never commit `.env` or cloud credentials to GitHub.
 
-Never commit the `.env` file or Azure credentials to GitHub.
-
-Make sure `.gitignore` contains:
+Make sure `.gitignore` includes:
 
 ```gitignore
 .env
 ```
 
-The current Azure resources used by the project are configured around:
+The current data-ingestion configuration uses:
 
 ```text
-Storage account: chickenmlstorage2026
-Container:       chicken-data-2025
-Blob:            data.zip
+Container: chicken-data-2025
+Blob:      data.zip
 ```
 
-If you fork or reuse the project, replace these values with your own Azure resources.
+When reusing the project, replace the Azure configuration with your own resources.
 
 ---
 
-## Installation
+# Installation
 
-### 1. Clone the Repository
+## 1. Clone the Repository
 
 ```bash
-git clone <your-repository-url>
+git clone https://github.com/ahmadakil67/Chicken-Disease-Classification.git
 cd Chicken-Disease-Classification
 ```
 
-### 2. Create a Conda Environment
+## 2. Create a Conda Environment
 
 ```bash
 conda create -n cnncls python=3.8 -y
 conda activate cnncls
 ```
 
-### 3. Install Dependencies
-
-Install the project requirements according to your dependency file, or install the core packages:
-
-```bash
-pip install tensorflow flask flask-cors azure-storage-blob python-dotenv pyyaml
-```
-
-If the repository contains `requirements.txt`, prefer:
+## 3. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -401,7 +454,7 @@ pip install -r requirements.txt
 
 ---
 
-## Running the Full Pipeline
+# Running the ML Pipeline
 
 Activate the environment:
 
@@ -409,66 +462,67 @@ Activate the environment:
 conda activate cnncls
 ```
 
-Then run:
+Run:
 
 ```bash
 python main.py
 ```
 
-The pipeline runs the stages in sequence:
+Pipeline sequence:
 
 ```text
 Data Ingestion
-    ->
+      |
+      v
 Prepare Base Model
-    ->
+      |
+      v
 Training
-    ->
+      |
+      v
 Evaluation
 ```
 
-A successful run should produce the trained model at:
+Successful execution should produce:
 
 ```text
 artifacts/training/model.h5
-```
-
-and evaluation metrics at:
-
-```text
 scores.json
 ```
 
 ---
 
-## Running the Web Application
+# Running the Web Application Locally
 
-After the trained model exists, start Flask:
+After the trained model exists:
 
 ```bash
 python app.py
 ```
 
-The application runs locally on:
+The application listens on port `8080`.
+
+Open:
 
 ```text
 http://127.0.0.1:8080
 ```
 
-Open the address in a browser and upload an image for classification.
+Then upload an image to obtain a prediction.
 
 ---
 
-## Prediction Pipeline
+# Prediction Pipeline
 
 The prediction pipeline:
 
 1. Loads the trained model.
-2. Loads and resizes the uploaded image to `224 x 224`.
-3. Applies VGG16 preprocessing.
-4. Runs model inference.
-5. Selects the class with the highest probability.
-6. Returns the predicted disease class.
+2. Loads the uploaded image.
+3. Resizes it to `224 x 224`.
+4. Applies VGG16 preprocessing.
+5. Performs inference.
+6. Selects the class with the highest probability.
+7. Returns the predicted class.
 
 Expected mapping:
 
@@ -480,7 +534,7 @@ class_names = {
 }
 ```
 
-Example response:
+An example response can look like:
 
 ```json
 [
@@ -491,13 +545,13 @@ Example response:
 ]
 ```
 
-The exact response structure depends on the implementation in `predict.py`.
+The exact response format depends on the implementation in `predict.py`.
 
 ---
 
-## Flask Endpoints
+# Flask Endpoints
 
-### Home
+## Home
 
 ```http
 GET /
@@ -505,15 +559,15 @@ GET /
 
 Renders the web interface.
 
-### Prediction
+## Prediction
 
 ```http
 POST /predict
 ```
 
-Receives an encoded image, runs inference, and returns the predicted class.
+Receives an encoded image, runs inference, and returns a prediction.
 
-### Training
+## Training
 
 ```http
 POST /train
@@ -521,68 +575,240 @@ POST /train
 
 Runs the training pipeline through `main.py`.
 
-> Triggering model training from a web route is useful for demonstration but should be replaced by a controlled training workflow or job system in a production application.
+> Triggering training from a synchronous web route is suitable for demonstration, but a controlled training job or workflow is preferable for production systems.
 
 ---
 
-## Current Performance
+# Docker
 
-| Metric | Value |
-|---|---:|
-| Validation Accuracy | **94.87%** |
-| Validation Loss | **1.4880** |
-| Number of Classes | **3** |
-| Input Shape | **224 x 224 x 3** |
-| Backbone | **VGG16** |
-| Pretrained Weights | **ImageNet** |
+The application is containerized and exposes port `8080`.
 
-Accuracy alone should not be treated as the complete measure of model quality. Future evaluation should also include per-class precision, recall, F1-score, and a confusion matrix.
+Build the image locally:
 
----
-
-## Recommended Next Improvements
-
-- Create an independent train/validation/test split
-- Add confusion matrix visualization
-- Report precision, recall, and F1-score for each disease class
-- Check class imbalance
-- Add confidence scores to web predictions
-- Load the prediction model once at application startup instead of reloading it for every request
-- Add model versioning
-- Add experiment tracking
-- Add automated tests
-- Add Docker support
-- Add CI/CD
-- Deploy the Flask application to Azure
-- Move long-running training away from a synchronous Flask request
-- Consider a lighter architecture such as MobileNetV2/EfficientNet for faster inference
-- Evaluate the model on unseen real-world poultry images
-
----
-
-## Notes on GPU Usage
-
-TensorFlow GPU availability depends on the operating system, TensorFlow version, NVIDIA driver, CUDA, cuDNN, and the GPU itself.
-
-The project does not require a GPU to run, but training can be significantly faster on a compatible modern GPU. Cloud GPU environments such as Azure Machine Learning, Kaggle, or Google Colab can be useful for larger training runs.
-
----
-
-## Reproducibility
-
-The project uses a fixed random seed in the image generators:
-
-```python
-seed=42
+```bash
+docker build -t chicken-disease-app .
 ```
 
-This helps keep training/validation splitting more reproducible across runs.
+Run it:
+
+```bash
+docker run -p 8080:8080 chicken-disease-app
+```
+
+Then open:
+
+```text
+http://localhost:8080
+```
+
+For Azure deployment, the image is published to Azure Container Registry using the repository:
+
+```text
+chickenmlacr2026.azurecr.io/chicken-disease-app
+```
 
 ---
 
-## Troubleshooting
+# Azure Deployment
 
-### TensorFlow shows no GPU
+The production application runs as a Linux container in **Azure App Service**.
+
+Current deployment flow:
+
+```text
+Docker Image
+    |
+    v
+Azure Container Registry
+    |
+    v
+Azure App Service
+    |
+    v
+Site Container: main
+Target Port: 8080
+```
+
+The application listens internally on port `8080`, so the Azure App Service site container must also use:
+
+```text
+TargetPort = 8080
+```
+
+This is important because a mismatch between Azure's target port and the application's listening port can produce `503 Service Unavailable` or startup-probe timeouts.
+
+---
+
+# CI/CD with GitHub Actions
+
+The repository contains:
+
+```text
+.github/workflows/cicd.yaml
+```
+
+The workflow runs automatically when code is pushed to the `main` branch, except when only `README.md` changes are ignored by the configured workflow.
+
+The pipeline contains three jobs:
+
+```text
+Continuous Integration
+        |
+        v
+Build and Push Docker Image
+        |
+        v
+Continuous Deployment
+```
+
+## CI/CD Flow
+
+1. Checkout the repository.
+2. Run the integration stage.
+3. Authenticate to Azure using GitHub OIDC.
+4. Authenticate to Azure Container Registry.
+5. Build the Docker image.
+6. Tag the image with both:
+   - the Git commit SHA
+   - `latest`
+7. Push the image to Azure Container Registry.
+8. Update the Azure App Service `main` site container.
+9. Keep the Azure target port at `8080`.
+10. Restart the Azure Web App.
+11. Verify the deployed site-container configuration.
+
+Using the Git commit SHA as the deployment tag makes each deployment traceable to a specific source-code revision.
+
+---
+
+## GitHub Actions Authentication
+
+The workflow uses passwordless **OpenID Connect (OIDC)** authentication instead of storing a long-lived Azure client secret.
+
+Required GitHub repository secrets:
+
+```text
+AZURE_CLIENT_ID
+AZURE_TENANT_ID
+AZURE_SUBSCRIPTION_ID
+ACR_NAME
+ACR_LOGIN_SERVER
+AZURE_WEBAPP_NAME
+```
+
+Do **not** commit any of these values directly into application source code.
+
+The Azure identity used by GitHub Actions requires suitable permissions for:
+
+- pushing images to Azure Container Registry
+- updating and restarting the Azure Web App
+
+---
+
+## Automatic Deployment
+
+After modifying the application:
+
+```bash
+git add .
+git commit -m "Describe your change"
+git push origin main
+```
+
+GitHub Actions then performs the Docker build, registry push, and Azure deployment automatically.
+
+You can monitor each run from:
+
+```text
+GitHub Repository -> Actions -> Chicken Disease CI/CD
+```
+
+A successful run should show:
+
+```text
+Continuous Integration        ✅
+Build and Push Docker Image   ✅
+Continuous Deployment        ✅
+```
+
+---
+
+# Security Notes
+
+- Never commit `.env`.
+- Never commit Azure connection strings.
+- Never commit client secrets, passwords, access tokens, or registry credentials.
+- Use GitHub repository secrets for workflow configuration.
+- Prefer GitHub OIDC for Azure authentication.
+- Rotate any credential immediately if it is accidentally exposed.
+- Keep training data and model artifacts out of Git when they are too large or sensitive.
+- Review Azure RBAC permissions and grant only the access required by the workflow.
+
+---
+
+# Reproducibility
+
+The image generators use a fixed seed:
+
+```python
+seed = 42
+```
+
+This helps make train/validation splitting more reproducible across runs.
+
+---
+
+# Troubleshooting
+
+## Azure App returns 503 or startup timeout
+
+Verify the site-container target port:
+
+```bash
+az webapp sitecontainers list \
+  --name chicken-disease-2026 \
+  --resource-group chicken-ml-rg \
+  -o table
+```
+
+The main container should use:
+
+```text
+Name        = main
+TargetPort  = 8080
+```
+
+If necessary:
+
+```bash
+az webapp sitecontainers update \
+  --name chicken-disease-2026 \
+  --resource-group chicken-ml-rg \
+  --container-name main \
+  --target-port 8080
+```
+
+---
+
+## Check Azure container logs
+
+```bash
+az webapp log tail \
+  --name chicken-disease-2026 \
+  --resource-group chicken-ml-rg
+```
+
+Look for messages such as:
+
+```text
+Container is running
+Site startup probe succeeded
+Running on ...:8080
+```
+
+---
+
+## TensorFlow shows no GPU
 
 Check:
 
@@ -590,17 +816,19 @@ Check:
 python -c "import tensorflow as tf; print(tf.config.list_physical_devices('GPU'))"
 ```
 
-An empty list means TensorFlow is currently using the CPU.
+An empty list means TensorFlow is using the CPU.
 
-### Dataset directory not found
+---
 
-Verify that this directory exists:
+## Dataset directory not found
+
+Verify:
 
 ```text
-artifacts/data_ingestion/Chicken Disease
+artifacts/data_ingestion/Chicken Disease/
 ```
 
-and contains:
+contains:
 
 ```text
 Coccidiosis/
@@ -608,7 +836,9 @@ Healthy/
 Salmonella/
 ```
 
-### Model not found
+---
+
+## Model not found
 
 Verify:
 
@@ -616,31 +846,71 @@ Verify:
 artifacts/training/model.h5
 ```
 
-exists before starting prediction.
-
-### Azure logs show HTTP 206
-
-This is normally expected. Azure Blob Storage can download large files in chunks, and `206 Partial Content` indicates that a requested byte range was successfully returned.
+exists before prediction.
 
 ---
 
-## Disclaimer
+## Azure Blob logs show HTTP 206
 
-This classifier is a machine learning research/educational project. Its predictions should not be used as a definitive veterinary diagnosis or as the sole basis for animal treatment decisions.
-
----
-
-## License
-
-No license has been specified yet.
-
-If this project will be published publicly, add an appropriate open-source license such as MIT, Apache-2.0, or another license that matches the intended use.
+`206 Partial Content` can be expected when Azure Blob Storage transfers a file using byte-range requests.
 
 ---
 
-## Author
+# Recommended Improvements
+
+- Create an independent train/validation/test split
+- Add precision, recall, F1-score, and confusion matrix reporting
+- Analyze class imbalance
+- Evaluate on unseen real-world poultry images
+- Add prediction confidence calibration
+- Load the model once at application startup when appropriate
+- Add model versioning
+- Add experiment tracking
+- Replace placeholder integration checks with real linting and unit tests such as `flake8` and `pytest`
+- Add deployment health checks
+- Add automated rollback or deployment-slot strategy
+- Move long-running training out of synchronous Flask requests
+- Compare lighter backbones such as MobileNetV2 or EfficientNet for faster inference
+- Add monitoring and application telemetry
+
+---
+
+# Notes on GPU Usage
+
+The project can run without a GPU, although training can be significantly faster with compatible GPU acceleration.
+
+TensorFlow GPU support depends on the operating system, TensorFlow version, NVIDIA driver, CUDA, cuDNN, and hardware compatibility.
+
+Cloud GPU environments such as Azure Machine Learning, Kaggle, or Google Colab may be useful for larger experiments.
+
+---
+
+# License
+
+No license is currently specified.
+
+If the repository is intended for public reuse, add an appropriate open-source license such as MIT or Apache-2.0.
+
+---
+
+# Author
 
 **Project:** Chicken Disease Classification  
-**Focus:** Deep Learning, Transfer Learning, MLOps-style Pipeline, Azure Blob Storage, Flask
+**GitHub:** [@ahmadakil67](https://github.com/ahmadakil67)  
+**Focus:** Deep Learning, Transfer Learning, Flask, Docker, Azure, MLOps, CI/CD
 
-Add your preferred name, GitHub profile, LinkedIn profile, and contact information here before publishing.
+---
+
+## Acknowledgements
+
+This project uses:
+
+- TensorFlow/Keras for deep learning
+- VGG16 pretrained on ImageNet
+- Flask for the web interface
+- Microsoft Azure for storage, container registry, and hosting
+- GitHub Actions for CI/CD automation
+
+---
+
+If you find the project useful, consider giving the repository a star.
