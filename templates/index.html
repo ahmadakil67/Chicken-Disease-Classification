@@ -4,82 +4,53 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <meta name="theme-color" content="#080b16" />
-  <title>VisionAI • Object Classification</title>
-
-  <link rel="shortcut icon"
-        href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAIq0lEQVRYw6WWa3BV1RXH/2vv88zNi5AHgTyIISSIEAgPeUwUrFDFx9hqx9F2dDp2dGy105m2fFG/tLXtdPqYim0dWkundbSjBtEWqIoVCWhIkKcJGpKQBxCSkJt7b3If55x99uoHkCk2QqTr29lz9t6//d/rv9ciTDHOjGucPefL/uFkxZYPjGkh3JLZ+VxKAnzsNPfOKfTiD6+RYW15Vo8ledw15ZTWpSv90DmYptYT6RmH+8W6D7pFY9LHqlNxWZhSpmsJ6UJqeAFP5NvKn1sU+jOy1a7qwmDbhqXZbXPL3cHiCPFVAQRaY097qrBpv/pq68nwof64vSielFYAA0wEYg1NAnRhCQIAUrCERqEdpufP0ocWloW/vW+1/a/6KichSUwdIOGF4rWW5LIdR8On3zturz7nmQ4jBCkTwtBwLfZybT/tGgGICQnPQDwwnUDBCbUAICBIYVaOSt40T7+2upaeumdlpDff+d/tjMkAmpqHl/91n/XnloFInR8aJBjIdkJ/drF/srooaK4oct5zrcwn84oy0Bpo7beRyOia8VR4S+ewccOpmFmWUoY8E5eRVw4F93UN61JBqe8r1keMzygxKYAg+FqzrzSTIX2eMy04vqY23LL2Wt305Yb8PtcS2hCRS+YklW6LJ9XL2/an5rZ0+t94v9u4fyBmV3qelD2juHFwTN0eahwDoK8IcPfqwkO90eSjAfmbiiL+6Jo62njn9TnHqovti5O19ggAmEwGgAt3rAB0HO1LPrV1f2rn3i5s6hziupvnixcbr7W22FLoKSdhc0cCKqSFrqnHrqt0B1zHADJRIxjurNIHNheZTt71ysida7DfHQx1HKR5GwatWQ1dmLkskCSQ9BS93jZR3z3or26oyX3xtkXO2FXZEABYJSgYOFgd9O77DvU332acPTJDeEmXdGCQNNgz3FSYVzFCBXU7ac6XXnDm39Em3MLgqt6BvtEAjkmU4xJnmRLaT5DX/vpiffyNXxt9uxuFFxXEDGaCIA0Cg4UAswENU6vS+rNc/8Amp279piBSmXpx92jJjOk2r1+cM3w+na/ggkO9qqy9N/nNiiLzFV+pT7yPmq7lIy9tsgZ2r4TKkGCACWChQZqhSUAoDVAIFiys060zg0zqCd+Pj223HnnntYPiuews7UmRehRA/2UBWns86zdv6m/v/djduHJ2avZt1SNPZp3c9Qs5sG+lVB4xM0IBCCYY4acPEAFEIAYMHQLEsEaPZac77B+ULlhnnxqvqe7vlxW2GfywtSe9cfk1bvoSx/33x1uH/eUHTvK3PBZBZbHVJU/vvSns27dWqCQhJBAYhmYI1gBpgBiEEAADFIKgQXx+zBrqqK4ffK7+9oXB01kmj7/fJb7+zpHUqkx4qREuAkRTWuzppHUDMVlYW6KaNywSm40T/1xrxbpdwfrikzvVMNQEGUOtjY/PP/j+8kq9YyBh5rf1yXtHxtmYFOB0lEs05Fcs6HB2fvjqishR04z1NYgwgCZx/pRfAEILApLRWe7Ih5XlhfRSboS9U1Gx4lj3eOGkAMcHtXN23MxzHSNRkGsd4lhfEatkGUiDWINF+IUUUASQn8qSfqK2sc7oLIqIc6MTsuTjITE5wFhCwVeAY4dBUT4lOfSIOSQCQNAXFOApA0hmEGkwJE3PMZKmIC/DFg1N2DQpQH4EyoTyVaBdFYSFWkYSEEYcVxmCBNi0tHYK0od7fHsizYYl/OCa6f7kSZjw6JwlVMeEL7KHY8EKt6w+auQUnQERmL7o9gRNEtrOjgnLPNxxSs0fS3NxrqP6GmuNzKQADTVWZmZB2ByEhAN9xoam7jLHn1HfrIyckGGAWYAvl4R83ifEBDDATNBOyb4uu7G/d8x4MOOzU1Wgd5dOt3onBVgyU/CaOrVrTkHqzIkRc+X2g/yYqrzlDT1j8SkR4oIKn58DLABNBCYGE6AjhT5Xrd3+bl9J3rm4v7Qy3x9YWY2maa68pEZc0jk+/+yPR8+Mhm7PEN9gCu1eU1PxfLk9mtSJvjUyEzUufxPi/Okl4Nn5mqtuft1c8sAvnYKZQzoMhubNCFvW1Wft/NOmpz+/H6iYbgfvtKd/B2Qyc0rk0QVVkUE5896/6CBeHnQ0PWLE+l0BBfCFGsB8XhRxoa5pjcAp0GH5mnftueuflLOWjSwhAV/rlwmwTCHUVZXjINqdq9q3PY72rQ+KaNccI3OOQgLADMkMkAEtbei8sqhfeUOTOf/un9rVjb0ks/7/tvzTCEc7pH/u5AJ14t8bZLR7HY20Z8uJPmi7AFy8UMusvBbUrH8bZct2WSWLMlP3y+fEu0cTeUMxb2lNRd7+JbOtiYsgoUecGMjhD34l9dEXgNIVoJt/xqJ4/oRhuhcl7h1jau/LZFsSmXUL3OALAWz/MFn8apv60aE+3DOvNPzDXSuynlm30B4pcKYm2LaDSpyNpjdsbdPfLcnRb97f6Dx7a73rTVq0PjtwNuY5P2lKPvGPY+5DY55p9I4FG0cmguUDI+r3bx1Nvb2qxkhlu9akGw+Oh7Kt06t6oy1+z94u89GeqF0xPStcKmSQfO948o83zouEVwRQSquMr1oKHP9rsbQsTQTC2tPjrO8eCa4vyw3fXFXnH35+d7KlKNvrLs8L4YeE5i4hxuOofWxzbG1/3L6ze8SZG/OEBATGA84digeLdx5I05SvIKPCOZt2TKz4Wyt/7+SItTilTMGkIRnItjTnOxzPc9RYxAqhoBFLW5RIysK4LyNplkSKQUKjNCdMN5TTltsb1M8fvilnYMoAIWs7lQnVM2+lKgaG1MY93eKu3qhVHPimYCERXqyOJgQziAESDCUACR/TbOVdVxp8tH6B3LyqLuvvN9aZiauyYcgaJ4ZDd+u+sYYDXfLu/jHnjrMxv3o4bZIiFxACxApCK5gywMx8mqia7rfUlmDr2gWRHbcutk5lmZdvJP4Dl9dVkYcTQYMAAAAASUVORK5CYII=" />
+  <meta name="theme-color" content="#f6f8f4" />
+  <title>Chicken Disease Classifier</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #080b16;
-      --panel: rgba(17, 22, 40, 0.72);
-      --panel-2: rgba(12, 17, 31, 0.82);
-      --stroke: rgba(255, 255, 255, 0.10);
-      --stroke-strong: rgba(124, 92, 255, 0.42);
-      --text: #f7f8ff;
-      --muted: #98a2b8;
-      --primary: #7c5cff;
-      --primary-2: #4cc9f0;
-      --success: #35d49a;
-      --danger: #ff6b81;
-      --shadow: 0 24px 80px rgba(0, 0, 0, 0.35);
+      --bg: #f6f8f4;
+      --card: #ffffff;
+      --text: #1d2a22;
+      --muted: #6f7b74;
+      --line: #e3e9e4;
+      --green: #2f7d4a;
+      --green-dark: #24613a;
+      --green-soft: #edf7f0;
+      --orange-soft: #fff5e8;
+      --orange: #b66a16;
+      --red-soft: #fff0ef;
+      --red: #b94a45;
+      --shadow: 0 16px 40px rgba(36, 61, 44, 0.08);
     }
 
     * { box-sizing: border-box; }
-
-    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
       min-height: 100vh;
       font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
-      background:
-        radial-gradient(circle at 12% 15%, rgba(124, 92, 255, 0.22), transparent 28%),
-        radial-gradient(circle at 88% 15%, rgba(76, 201, 240, 0.14), transparent 24%),
-        radial-gradient(circle at 50% 100%, rgba(53, 212, 154, 0.08), transparent 34%),
-        var(--bg);
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.22;
-      background-image:
-        linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
-      background-size: 42px 42px;
-      mask-image: linear-gradient(to bottom, black, transparent 82%);
+      background: var(--bg);
     }
 
     button, input { font: inherit; }
 
-    button:focus-visible,
-    .upload-zone:focus-visible {
-      outline: 3px solid rgba(76, 201, 240, 0.5);
-      outline-offset: 3px;
-    }
-
-    .app-shell {
-      position: relative;
-      width: min(1180px, calc(100% - 32px));
+    .page {
+      width: min(1040px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 28px 0 44px;
+      padding: 34px 0 44px;
     }
 
     .topbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
+      gap: 16px;
       margin-bottom: 34px;
     }
 
@@ -89,221 +60,189 @@
       gap: 12px;
     }
 
-    .brand-mark {
-      width: 44px;
-      height: 44px;
-      border-radius: 14px;
+    .brand-icon {
+      width: 42px;
+      height: 42px;
       display: grid;
       place-items: center;
-      color: white;
-      background: linear-gradient(135deg, var(--primary), var(--primary-2));
-      box-shadow: 0 10px 30px rgba(124, 92, 255, 0.32);
+      border-radius: 12px;
+      background: var(--green-soft);
+      font-size: 23px;
     }
 
-    .brand-mark svg { width: 23px; height: 23px; }
-
-    .brand-copy strong {
+    .brand strong {
       display: block;
-      font-family: "Manrope", sans-serif;
-      font-size: 16px;
-      letter-spacing: -0.02em;
+      font-size: 15px;
     }
 
-    .brand-copy span {
+    .brand span {
       display: block;
-      margin-top: 2px;
-      font-size: 12px;
+      margin-top: 3px;
       color: var(--muted);
+      font-size: 11px;
     }
 
-    .status-pill {
+    .status {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      min-height: 36px;
-      padding: 0 13px;
-      border: 1px solid rgba(53, 212, 154, 0.24);
+      gap: 7px;
+      padding: 8px 12px;
+      border: 1px solid #d6e7da;
       border-radius: 999px;
-      color: #b9f6de;
-      background: rgba(53, 212, 154, 0.08);
+      color: var(--green-dark);
+      background: #f4fbf6;
       font-size: 12px;
       font-weight: 600;
-      white-space: nowrap;
     }
 
-    .status-dot {
-      width: 8px;
-      height: 8px;
+    .status::before {
+      content: "";
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
-      background: var(--success);
-      box-shadow: 0 0 0 5px rgba(53, 212, 154, 0.1);
+      background: #36a15d;
     }
 
     .hero {
-      text-align: center;
       max-width: 760px;
-      margin: 0 auto 32px;
+      margin: 0 auto 28px;
+      text-align: center;
     }
 
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 12px;
-      border: 1px solid var(--stroke);
-      border-radius: 999px;
-      color: #c7cef2;
-      background: rgba(255,255,255,0.035);
+    .hero .kicker {
+      margin: 0 0 10px;
+      color: var(--green);
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
-    .eyebrow svg { width: 14px; height: 14px; }
-
-    h1 {
-      margin: 18px 0 12px;
-      font-family: "Manrope", sans-serif;
-      font-size: clamp(36px, 6vw, 62px);
-      line-height: 1.02;
-      letter-spacing: -0.055em;
-    }
-
-    .gradient-text {
-      color: transparent;
-      background: linear-gradient(105deg, #ffffff 18%, #b9abff 52%, #75dcf7 84%);
-      -webkit-background-clip: text;
-      background-clip: text;
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(31px, 5vw, 46px);
+      line-height: 1.12;
+      letter-spacing: -0.04em;
     }
 
     .hero p {
-      margin: 0 auto;
-      max-width: 620px;
+      max-width: 650px;
+      margin: 13px auto 0;
       color: var(--muted);
-      font-size: 15px;
-      line-height: 1.75;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .classes {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .class-pill {
+      padding: 7px 11px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      color: #48564d;
+      font-size: 12px;
+      font-weight: 600;
     }
 
     .workspace {
       display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      grid-template-columns: 1fr 1fr;
       gap: 18px;
-      align-items: stretch;
     }
 
     .card {
-      position: relative;
-      overflow: hidden;
-      border: 1px solid var(--stroke);
-      border-radius: 26px;
-      background: linear-gradient(180deg, rgba(18, 24, 43, 0.82), rgba(10, 14, 27, 0.78));
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--card);
       box-shadow: var(--shadow);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
     }
 
-    .card::before {
-      content: "";
-      position: absolute;
-      width: 180px;
-      height: 180px;
-      right: -70px;
-      top: -90px;
-      border-radius: 50%;
-      background: rgba(124, 92, 255, 0.13);
-      filter: blur(12px);
-      pointer-events: none;
+    .card-inner { padding: 20px; }
+
+    .section-title {
+      margin-bottom: 15px;
     }
 
-    .card-inner { padding: 22px; }
-
-    .card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 14px;
-      margin-bottom: 18px;
-    }
-
-    .card-title {
-      display: flex;
-      align-items: center;
-      gap: 11px;
-    }
-
-    .icon-box {
-      flex: 0 0 auto;
-      width: 38px;
-      height: 38px;
-      display: grid;
-      place-items: center;
-      border-radius: 12px;
-      color: #d9d2ff;
-      background: rgba(124, 92, 255, 0.12);
-      border: 1px solid rgba(124, 92, 255, 0.18);
-    }
-
-    .icon-box svg { width: 18px; height: 18px; }
-
-    .card-title h2 {
+    .section-title h2 {
       margin: 0;
-      font-family: "Manrope", sans-serif;
       font-size: 16px;
       letter-spacing: -0.02em;
     }
 
-    .card-title p {
-      margin: 4px 0 0;
-      font-size: 12px;
+    .section-title p {
+      margin: 5px 0 0;
       color: var(--muted);
-    }
-
-    .mini-tag {
-      padding: 7px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--stroke);
-      color: #aab3c6;
-      background: rgba(255,255,255,0.025);
-      font-size: 11px;
-      font-weight: 600;
+      font-size: 12px;
+      line-height: 1.55;
     }
 
     .upload-zone {
       position: relative;
-      min-height: 390px;
+      min-height: 330px;
       display: grid;
       place-items: center;
-      padding: 16px;
-      border: 1px dashed rgba(151, 164, 210, 0.24);
-      border-radius: 22px;
       overflow: hidden;
+      padding: 22px;
+      border: 1.5px dashed #cbd8ce;
+      border-radius: 16px;
+      background: #fbfcfa;
       cursor: pointer;
-      background:
-        radial-gradient(circle at 50% 20%, rgba(124, 92, 255, 0.11), transparent 38%),
-        rgba(255,255,255,0.018);
-      transition: 180ms ease;
+      transition: .18s ease;
     }
 
     .upload-zone:hover,
     .upload-zone.dragging {
-      border-color: rgba(124, 92, 255, 0.72);
-      background:
-        radial-gradient(circle at 50% 20%, rgba(124, 92, 255, 0.19), transparent 38%),
-        rgba(124, 92, 255, 0.035);
-      transform: translateY(-1px);
+      border-color: #78a987;
+      background: #f6fbf7;
     }
 
-    .preview-wrap {
+    .upload-empty {
+      width: min(300px, 100%);
+      text-align: center;
+    }
+
+    .upload-empty.hidden { display: none; }
+
+    .upload-icon {
+      width: 62px;
+      height: 62px;
+      margin: 0 auto 15px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: var(--green-soft);
+      font-size: 28px;
+    }
+
+    .upload-empty h3 {
+      margin: 0 0 6px;
+      font-size: 15px;
+    }
+
+    .upload-empty p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .preview {
       position: absolute;
-      inset: 12px;
+      inset: 10px;
       display: none;
-      border-radius: 16px;
       overflow: hidden;
-      background: #060912;
+      border-radius: 12px;
+      background: #eef2ee;
     }
 
-    .preview-wrap.active { display: block; }
+    .preview.active { display: block; }
 
     #photo {
       width: 100%;
@@ -312,99 +251,29 @@
       display: block;
     }
 
-    #video,
-    #canvas { display: none !important; }
+    #video, #canvas { display: none !important; }
 
-    .empty-state {
-      width: min(330px, 100%);
-      text-align: center;
-      transition: 180ms ease;
-    }
-
-    .empty-state.hidden {
-      opacity: 0;
-      visibility: hidden;
-    }
-
-    .upload-art {
-      position: relative;
-      width: 92px;
-      height: 92px;
-      margin: 0 auto 20px;
-      display: grid;
-      place-items: center;
-      border-radius: 28px;
-      background: linear-gradient(145deg, rgba(124, 92, 255, 0.18), rgba(76, 201, 240, 0.08));
-      border: 1px solid rgba(124, 92, 255, 0.24);
-      color: #cfc6ff;
-    }
-
-    .upload-art::before,
-    .upload-art::after {
-      content: "";
-      position: absolute;
-      border-radius: 50%;
-      border: 1px solid rgba(124, 92, 255, 0.14);
-    }
-
-    .upload-art::before { inset: -9px; }
-    .upload-art::after { inset: -18px; opacity: .55; }
-    .upload-art svg { width: 36px; height: 36px; }
-
-    .empty-state h3 {
-      margin: 0 0 7px;
-      font-family: "Manrope", sans-serif;
-      font-size: 17px;
-    }
-
-    .empty-state p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.65;
-    }
-
-    .empty-state strong { color: #d8dff0; font-weight: 600; }
-
-    .file-meta {
+    .file-row {
       display: none;
       align-items: center;
       justify-content: space-between;
       gap: 12px;
-      margin-top: 14px;
-      padding: 12px 14px;
-      border-radius: 14px;
-      border: 1px solid var(--stroke);
-      background: rgba(255,255,255,.025);
+      margin-top: 12px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fcfdfc;
     }
 
-    .file-meta.active { display: flex; }
+    .file-row.active { display: flex; }
 
-    .file-info {
-      min-width: 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .file-icon {
-      width: 34px;
-      height: 34px;
-      display: grid;
-      place-items: center;
-      flex: 0 0 auto;
-      border-radius: 10px;
-      color: #baf2df;
-      background: rgba(53, 212, 154, 0.1);
-    }
-
-    .file-icon svg { width: 17px; height: 17px; }
+    .file-text { min-width: 0; }
 
     .file-name {
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
-      max-width: 320px;
+      max-width: 300px;
       font-size: 12px;
       font-weight: 600;
     }
@@ -416,77 +285,54 @@
     }
 
     .remove-btn {
-      width: 34px;
-      height: 34px;
       border: 0;
-      border-radius: 10px;
-      color: #adb5c8;
+      border-radius: 8px;
+      padding: 7px 9px;
+      color: #7c8780;
       background: transparent;
       cursor: pointer;
-      transition: 160ms ease;
     }
 
-    .remove-btn:hover {
-      color: #fff;
-      background: rgba(255,255,255,.06);
-    }
+    .remove-btn:hover { background: #f1f4f1; }
 
     .actions {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 10px;
-      margin-top: 14px;
+      margin-top: 12px;
     }
 
     .btn {
-      min-height: 48px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      border-radius: 14px;
+      min-height: 44px;
+      border-radius: 11px;
       border: 1px solid transparent;
       cursor: pointer;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
-      transition: 170ms ease;
     }
-
-    .btn svg { width: 17px; height: 17px; }
 
     .btn-secondary {
-      color: #dbe1ef;
-      border-color: var(--stroke);
-      background: rgba(255,255,255,0.035);
+      color: #3f4d44;
+      border-color: var(--line);
+      background: #fff;
     }
 
-    .btn-secondary:hover {
-      border-color: rgba(255,255,255,.18);
-      background: rgba(255,255,255,0.065);
-      transform: translateY(-1px);
-    }
+    .btn-secondary:hover { background: #f8faf8; }
 
     .btn-primary {
-      color: white;
-      background: linear-gradient(135deg, #7657ff, #5d80ff 56%, #3abfe8);
-      box-shadow: 0 12px 30px rgba(92, 85, 255, 0.28);
+      color: #fff;
+      background: var(--green);
     }
 
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 16px 38px rgba(92, 85, 255, 0.35);
-    }
+    .btn-primary:hover { background: var(--green-dark); }
 
     .btn-primary:disabled {
       cursor: not-allowed;
       opacity: .45;
-      transform: none;
-      box-shadow: none;
-      filter: grayscale(.2);
     }
 
-    .results-body {
-      min-height: 458px;
+    .result-area {
+      min-height: 468px;
       display: flex;
       flex-direction: column;
     }
@@ -496,147 +342,137 @@
       min-height: 350px;
       display: grid;
       place-items: center;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fbfcfa;
       text-align: center;
-      border: 1px dashed rgba(151, 164, 210, 0.20);
-      border-radius: 22px;
-      background: rgba(255,255,255,.015);
     }
 
     .result-empty.hidden { display: none; }
 
-    .result-empty-inner { max-width: 270px; padding: 30px 18px; }
-
-    .result-orb {
-      width: 74px;
-      height: 74px;
-      margin: 0 auto 17px;
+    .result-empty .icon {
+      width: 58px;
+      height: 58px;
+      margin: 0 auto 13px;
       display: grid;
       place-items: center;
       border-radius: 50%;
-      color: #a99cff;
-      border: 1px solid rgba(124, 92, 255, 0.2);
-      background: radial-gradient(circle, rgba(124,92,255,.16), rgba(124,92,255,.03));
-      box-shadow: inset 0 0 24px rgba(124,92,255,.08);
+      background: var(--green-soft);
+      font-size: 25px;
     }
 
-    .result-orb svg { width: 29px; height: 29px; }
-
     .result-empty h3 {
-      margin: 0 0 7px;
-      font-family: "Manrope", sans-serif;
-      font-size: 16px;
+      margin: 0 0 6px;
+      font-size: 15px;
     }
 
     .result-empty p {
+      max-width: 290px;
       margin: 0;
       color: var(--muted);
       font-size: 12px;
-      line-height: 1.7;
+      line-height: 1.65;
     }
 
     .result-content { display: none; }
     .result-content.active { display: block; }
 
-    .result-image-box {
-      display: none;
-      height: 210px;
-      margin-bottom: 12px;
-      overflow: hidden;
-      border-radius: 18px;
-      border: 1px solid var(--stroke);
-      background: #070a12;
+    .prediction-box {
+      padding: 20px;
+      border: 1px solid #dbe7dd;
+      border-radius: 16px;
+      background: var(--green-soft);
     }
 
-    .result-image-box.active { display: block; }
-
-    .resp-img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: block;
-    }
-
-    .json-card {
-      overflow: hidden;
-      border-radius: 18px;
-      border: 1px solid var(--stroke);
-      background: rgba(5, 8, 16, 0.82);
-    }
-
-    .json-head {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-      min-height: 46px;
-      padding: 0 14px;
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-
-    .json-head span {
-      color: #bac3d7;
+    .prediction-label {
+      color: var(--muted);
       font-size: 11px;
       font-weight: 700;
       letter-spacing: .08em;
       text-transform: uppercase;
     }
 
-    .copy-btn {
-      border: 0;
-      padding: 7px 9px;
-      border-radius: 9px;
-      color: #9ca8bf;
-      background: transparent;
+    .prediction-name {
+      margin-top: 8px;
+      font-size: 29px;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -0.03em;
+      text-transform: capitalize;
+    }
+
+    .prediction-note {
+      margin-top: 8px;
+      color: #56665c;
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .processed-image {
+      display: none;
+      height: 190px;
+      margin-top: 12px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #f2f4f2;
+    }
+
+    .processed-image.active { display: block; }
+
+    .processed-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    details {
+      margin-top: 12px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    summary {
+      padding: 12px 14px;
       cursor: pointer;
-      font-size: 11px;
+      color: #536057;
+      font-size: 12px;
       font-weight: 600;
     }
 
-    .copy-btn:hover { color: #fff; background: rgba(255,255,255,.05); }
-
-    .res-part {
-      min-height: 250px;
-      max-height: 330px;
-      overflow: auto;
-      padding: 16px;
-      scrollbar-width: thin;
-      scrollbar-color: #394159 transparent;
-    }
-
-    .res-part pre {
+    pre {
       margin: 0;
-      color: #dce4f7;
-      font: 12px/1.65 "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      padding: 0 14px 14px;
+      overflow: auto;
+      color: #435047;
+      font: 11px/1.6 Consolas, Monaco, monospace;
       white-space: pre-wrap;
       word-break: break-word;
     }
 
-    .result-status {
+    .message {
       display: none;
-      align-items: center;
-      gap: 8px;
       margin-top: 12px;
       padding: 10px 12px;
-      border-radius: 12px;
+      border-radius: 10px;
       font-size: 12px;
-      line-height: 1.45;
+      line-height: 1.5;
     }
 
-    .result-status.active { display: flex; }
-    .result-status.success { color: #baf4df; background: rgba(53,212,154,.08); border: 1px solid rgba(53,212,154,.16); }
-    .result-status.error { color: #ffd0d7; background: rgba(255,107,129,.08); border: 1px solid rgba(255,107,129,.16); }
+    .message.active { display: block; }
+    .message.success { color: var(--green-dark); background: var(--green-soft); }
+    .message.error { color: var(--red); background: var(--red-soft); }
 
-    .footer-note {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-      margin-top: 22px;
-      color: #69738a;
-      font-size: 11px;
+    .footnote {
+      max-width: 720px;
+      margin: 18px auto 0;
+      color: #7c8780;
+      font-size: 10.5px;
+      line-height: 1.55;
+      text-align: center;
     }
-
-    .footer-note svg { width: 13px; height: 13px; }
 
     #fileinput {
       position: fixed;
@@ -652,255 +488,170 @@
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 24px;
-      background: rgba(5, 7, 14, 0.78);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(247, 249, 246, .78);
+      backdrop-filter: blur(6px);
     }
 
     .loader-card {
-      width: min(310px, 100%);
-      padding: 28px 24px;
-      text-align: center;
-      border: 1px solid var(--stroke);
-      border-radius: 24px;
-      background: rgba(16, 21, 38, 0.94);
+      width: min(290px, calc(100% - 32px));
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #fff;
       box-shadow: var(--shadow);
+      text-align: center;
     }
 
     .loader {
-      width: 48px;
-      height: 48px;
-      margin: 0 auto 17px;
+      width: 38px;
+      height: 38px;
+      margin: 0 auto 13px;
+      border: 4px solid #e7eee8;
+      border-top-color: var(--green);
       border-radius: 50%;
-      border: 4px solid rgba(255,255,255,.07);
-      border-top-color: var(--primary);
-      border-right-color: var(--primary-2);
       animation: spin .8s linear infinite;
     }
 
-    .loader-card strong {
-      display: block;
-      font-family: "Manrope", sans-serif;
-      font-size: 15px;
-    }
-
+    .loader-card strong { font-size: 14px; }
     .loader-card span {
       display: block;
-      margin-top: 7px;
+      margin-top: 5px;
       color: var(--muted);
-      font-size: 12px;
+      font-size: 11px;
     }
 
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    @media (max-width: 900px) {
+    @media (max-width: 820px) {
       .workspace { grid-template-columns: 1fr; }
-      .results-body { min-height: auto; }
+      .result-area { min-height: auto; }
     }
 
-    @media (max-width: 620px) {
-      .app-shell { width: min(100% - 20px, 1180px); padding-top: 18px; }
-      .topbar { margin-bottom: 28px; }
-      .brand-copy span { display: none; }
-      .status-pill { padding: 0 10px; }
-      .status-pill .status-copy { display: none; }
-      .hero { margin-bottom: 24px; }
-      .hero p { font-size: 13px; }
-      .card { border-radius: 22px; }
-      .card-inner { padding: 15px; }
-      .card-header { align-items: flex-start; }
-      .mini-tag { display: none; }
-      .upload-zone { min-height: 330px; }
+    @media (max-width: 560px) {
+      .page { width: min(100% - 20px, 1040px); padding-top: 20px; }
+      .brand span { display: none; }
+      .status { font-size: 11px; padding: 7px 9px; }
+      .hero h1 { font-size: 32px; }
+      .upload-zone { min-height: 290px; }
       .actions { grid-template-columns: 1fr; }
       .file-name { max-width: 190px; }
-      .result-image-box { height: 190px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .card-inner { padding: 15px; }
     }
   </style>
 </head>
 
 <body>
-  <main class="app-shell">
+  <main class="page">
     <header class="topbar">
       <div class="brand">
-        <div class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 8.5V7a3 3 0 0 1 3-3h1.5" />
-            <path d="M15.5 4H17a3 3 0 0 1 3 3v1.5" />
-            <path d="M20 15.5V17a3 3 0 0 1-3 3h-1.5" />
-            <path d="M8.5 20H7a3 3 0 0 1-3-3v-1.5" />
-            <circle cx="12" cy="12" r="3.2" />
-          </svg>
-        </div>
-        <div class="brand-copy">
-          <strong>VisionAI</strong>
-          <span>Image Intelligence Workspace</span>
+        <div class="brand-icon" aria-hidden="true">🐔</div>
+        <div>
+          <strong>Poultry Health AI</strong>
+          <span>Chicken disease image classification</span>
         </div>
       </div>
-
-      <div class="status-pill">
-        <span class="status-dot"></span>
-        <span class="status-copy">Model ready</span>
-      </div>
+      <div class="status">Model ready</div>
     </header>
 
     <section class="hero">
-      <div class="eyebrow">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <path d="m12 3 1.2 3.3L16.5 7.5l-3.3 1.2L12 12l-1.2-3.3-3.3-1.2 3.3-1.2L12 3Z" />
-          <path d="m18 13 .8 2.2L21 16l-2.2.8L18 19l-.8-2.2L15 16l2.2-.8L18 13Z" />
-        </svg>
-        AI-powered image analysis
+      <p class="kicker">CNN Image Classifier</p>
+      <h1>Chicken Disease Classification</h1>
+      <p>
+        Upload a chicken image and the trained model will classify it into one of the three supported categories.
+      </p>
+      <div class="classes" aria-label="Supported classes">
+        <span class="class-pill">Coccidiosis</span>
+        <span class="class-pill">Healthy</span>
+        <span class="class-pill">Salmonella</span>
       </div>
-      <h1><span class="gradient-text">Object Classification</span><br />made beautifully simple.</h1>
-      <p>Upload an image and let your trained CNN classify it. The original prediction endpoint is preserved, while the experience gets a complete visual upgrade.</p>
     </section>
 
     <section class="workspace">
       <article class="card">
         <div class="card-inner">
-          <div class="card-header">
-            <div class="card-title">
-              <div class="icon-box">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <rect x="3" y="3" width="18" height="18" rx="3" />
-                  <circle cx="8.5" cy="8.5" r="1.5" />
-                  <path d="m21 15-5-5L5 21" />
-                </svg>
-              </div>
-              <div>
-                <h2>Image input</h2>
-                <p>Select an image for inference</p>
-              </div>
-            </div>
-            <span class="mini-tag">JPG • PNG • WEBP</span>
+          <div class="section-title">
+            <h2>Upload image</h2>
+            <p>Select a clear chicken image for prediction.</p>
           </div>
 
           <div class="upload-zone" id="uploadZone" tabindex="0" role="button" aria-label="Choose an image to upload">
-            <div class="preview-wrap" id="previewWrap">
-              <img src="" id="photo" alt="Selected image preview" />
+            <div class="preview" id="previewWrap">
+              <img src="" id="photo" alt="Selected chicken image preview" />
             </div>
 
-            <div class="empty-state" id="emptyState">
-              <div class="upload-art">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M12 16V4" />
-                  <path d="m7 9 5-5 5 5" />
-                  <path d="M5 14v4a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-4" />
-                </svg>
-              </div>
-              <h3>Drop your image here</h3>
-              <p>or <strong>click to browse</strong> from your device.<br />Choose a clear image for the best prediction.</p>
+            <div class="upload-empty" id="emptyState">
+              <div class="upload-icon">📷</div>
+              <h3>Choose a chicken image</h3>
+              <p>Click here or drag and drop a JPG, PNG, or WEBP image.</p>
             </div>
 
             <video autoplay id="video"></video>
             <canvas id="canvas"></canvas>
           </div>
 
-          <div class="file-meta" id="fileMeta">
-            <div class="file-info">
-              <div class="file-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z" />
-                  <path d="M14 2v6h6" />
-                  <path d="m8 17 2.5-3 2 2 1.5-2 2 3" />
-                </svg>
-              </div>
-              <div style="min-width:0">
-                <div class="file-name" id="fileName">image.jpg</div>
-                <div class="file-size" id="fileSize">0 KB</div>
-              </div>
+          <div class="file-row" id="fileMeta">
+            <div class="file-text">
+              <div class="file-name" id="fileName">image.jpg</div>
+              <div class="file-size" id="fileSize">0 KB</div>
             </div>
-            <button class="remove-btn" id="removeImage" type="button" aria-label="Remove selected image" title="Remove image">✕</button>
+            <button class="remove-btn" id="removeImage" type="button" aria-label="Remove selected image">Remove</button>
           </div>
 
           <div class="actions">
-            <button type="button" class="btn btn-secondary" id="uload">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M12 16V4" /><path d="m7 9 5-5 5 5" /><path d="M5 20h14" />
-              </svg>
-              Choose image
-            </button>
-            <button id="send" type="button" class="btn btn-primary" disabled>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M4 13h12" /><path d="m12 5 8 8-8 8" />
-              </svg>
-              Run prediction
-            </button>
+            <button type="button" class="btn btn-secondary" id="uload">Choose image</button>
+            <button id="send" type="button" class="btn btn-primary" disabled>Predict disease</button>
           </div>
 
-          <!-- Keep this endpoint aligned with your Flask route. -->
           <input type="hidden" id="url" value="../predict" />
           <input name="upload" type="file" id="fileinput" accept="image/*" />
         </div>
       </article>
 
       <article class="card">
-        <div class="card-inner results-body">
-          <div class="card-header">
-            <div class="card-title">
-              <div class="icon-box">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M4 19V9" /><path d="M10 19V5" /><path d="M16 19v-7" /><path d="M22 19V3" />
-                </svg>
-              </div>
-              <div>
-                <h2>Prediction result</h2>
-                <p>Model response and processed output</p>
-              </div>
-            </div>
-            <span class="mini-tag">Live API</span>
+        <div class="card-inner result-area">
+          <div class="section-title">
+            <h2>Prediction result</h2>
+            <p>The model prediction will appear here.</p>
           </div>
 
           <div class="result-empty" id="resultEmpty">
-            <div class="result-empty-inner">
-              <div class="result-orb">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <circle cx="11" cy="11" r="7" />
-                  <path d="m20 20-4-4" />
-                  <path d="M8.5 11h5" />
-                  <path d="M11 8.5v5" />
-                </svg>
-              </div>
-              <h3>Waiting for an image</h3>
-              <p>Your model output will appear here after you upload an image and run prediction.</p>
+            <div>
+              <div class="icon">🔎</div>
+              <h3>No prediction yet</h3>
+              <p>Upload an image and click <strong>Predict disease</strong> to see the result.</p>
             </div>
           </div>
 
           <div class="result-content" id="resultContent">
-            <div class="result-image-box res-part2" id="resultImageBox"></div>
-
-            <div class="json-card">
-              <div class="json-head">
-                <span>Model response</span>
-                <button type="button" class="copy-btn" id="copyResult">Copy JSON</button>
-              </div>
-              <div class="res-part"><pre id="jsonOutput">{}</pre></div>
+            <div class="prediction-box">
+              <div class="prediction-label">Predicted class</div>
+              <div class="prediction-name" id="predictionName">—</div>
+              <div class="prediction-note">Model output for the uploaded image.</div>
             </div>
 
-            <div class="result-status" id="resultStatus"></div>
+            <div class="processed-image" id="resultImageBox"></div>
+
+            <details>
+              <summary>View model response</summary>
+              <pre id="jsonOutput">{}</pre>
+            </details>
+
+            <div class="message" id="resultStatus"></div>
           </div>
         </div>
       </article>
     </section>
 
-    <div class="footer-note">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" /><path d="m9 12 2 2 4-4" />
-      </svg>
-      Your image is sent only to the configured prediction endpoint.
-    </div>
+    <p class="footnote">
+      This interface is for your machine-learning project and should not be treated as a substitute for professional veterinary diagnosis.
+    </p>
   </main>
 
   <div id="loading" aria-live="polite" aria-busy="true">
     <div class="loader-card">
       <div class="loader"></div>
-      <strong>Analyzing your image</strong>
-      <span>The model is preparing its prediction.</span>
+      <strong>Analyzing image</strong>
+      <span>Running the chicken disease classifier...</span>
     </div>
   </div>
 
@@ -911,14 +662,13 @@
     var myphoto = document.getElementById('photo');
     var base_data = "";
     var selectedFile = null;
-    var latestResultText = "";
 
     function escapeHtml(value) {
       return String(value)
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
+        .replace(/\"/g, "&quot;")
         .replace(/'/g, "&#039;");
     }
 
@@ -932,17 +682,54 @@
 
     function setStatus(message, type) {
       var el = document.getElementById('resultStatus');
-      el.className = 'result-status active ' + type;
+      el.className = 'message active ' + type;
       el.textContent = message;
+    }
+
+    function normaliseLabel(value) {
+      if (value === null || value === undefined) return '';
+      var text = String(value).trim();
+      if (!text) return '';
+      return text.replace(/_/g, ' ');
+    }
+
+    function extractPredictionLabel(payload) {
+      var value = payload;
+
+      if (Array.isArray(value)) {
+        if (!value.length) return '';
+        value = value[0];
+      }
+
+      if (typeof value === 'string' || typeof value === 'number') {
+        return normaliseLabel(value);
+      }
+
+      if (value && typeof value === 'object') {
+        var candidateKeys = ['prediction', 'class', 'label', 'predicted_class', 'result', 'disease'];
+        for (var i = 0; i < candidateKeys.length; i++) {
+          var key = candidateKeys[i];
+          if (value[key] !== undefined && value[key] !== null && typeof value[key] !== 'object') {
+            return normaliseLabel(value[key]);
+          }
+        }
+
+        var keys = Object.keys(value);
+        if (keys.length === 1 && typeof value[keys[0]] !== 'object') {
+          return normaliseLabel(value[keys[0]]);
+        }
+      }
+
+      return '';
     }
 
     function resetResult() {
       $('#resultContent').removeClass('active');
       $('#resultEmpty').removeClass('hidden');
+      $('#predictionName').text('—');
       $('#resultImageBox').removeClass('active').html('');
       $('#jsonOutput').text('{}');
       $('#resultStatus').removeClass('active success error').text('');
-      latestResultText = '';
     }
 
     function resetImage() {
@@ -963,6 +750,7 @@
       if (!file.type || !file.type.startsWith('image/')) {
         $('#resultEmpty').addClass('hidden');
         $('#resultContent').addClass('active');
+        $('#predictionName').text('Invalid file');
         setStatus('Please choose a valid image file.', 'error');
         return;
       }
@@ -981,7 +769,6 @@
           canvas.width = this.naturalWidth || this.width;
           ctx.drawImage(this, 0, 0);
           base_data = canvas.toDataURL('image/jpeg', 0.94).replace(/^data:image\/.+;base64,/, '');
-
           $('#send').prop('disabled', false);
         };
 
@@ -989,6 +776,7 @@
           resetImage();
           $('#resultEmpty').addClass('hidden');
           $('#resultContent').addClass('active');
+          $('#predictionName').text('Could not read image');
           setStatus('The selected file could not be read as an image.', 'error');
         };
 
@@ -1006,22 +794,24 @@
     }
 
     function renderResponse(res) {
-      var prediction = Array.isArray(res) ? res[0] : res;
+      var predictionPayload = Array.isArray(res) ? res[0] : res;
       var imageData = '';
 
       if (Array.isArray(res) && res[1] && typeof res[1] === 'object' && res[1].image) {
         imageData = res[1].image;
       }
 
-      latestResultText = JSON.stringify(prediction, null, 2);
-      $('#jsonOutput').text(latestResultText || '{}');
+      var label = extractPredictionLabel(predictionPayload);
+      var displayText = label || 'Prediction returned';
 
+      $('#predictionName').text(displayText);
+      $('#jsonOutput').text(JSON.stringify(predictionPayload, null, 2) || '{}');
       $('#resultEmpty').addClass('hidden');
       $('#resultContent').addClass('active');
 
       if (typeof imageData === 'string' && imageData.length > 100) {
         $('#resultImageBox')
-          .html("<img class='resp-img' src='data:image/jpeg;base64," + escapeHtml(imageData) + "' alt='Processed prediction output' />")
+          .html("<img src='data:image/jpeg;base64," + escapeHtml(imageData) + "' alt='Processed prediction output' />")
           .addClass('active');
       } else {
         $('#resultImageBox').removeClass('active').html('');
@@ -1034,6 +824,7 @@
       if (!base64Data) {
         $('#resultEmpty').addClass('hidden');
         $('#resultContent').addClass('active');
+        $('#predictionName').text('No image selected');
         setStatus('Choose an image before running prediction.', 'error');
         return;
       }
@@ -1058,8 +849,9 @@
         error: function (xhr) {
           $('#resultEmpty').addClass('hidden');
           $('#resultContent').addClass('active');
+          $('#predictionName').text('Prediction failed');
 
-          var message = 'Prediction failed. Please check the Flask server and /predict endpoint.';
+          var message = 'Please check that the Flask server and /predict endpoint are running.';
           if (xhr && xhr.status) message += ' HTTP ' + xhr.status + '.';
           setStatus(message, 'error');
         },
@@ -1116,28 +908,6 @@
         event.preventDefault();
         event.stopPropagation();
         resetImage();
-      });
-
-      $('#copyResult').on('click', function () {
-        if (!latestResultText) return;
-
-        if (navigator.clipboard && window.isSecureContext) {
-          navigator.clipboard.writeText(latestResultText).then(function () {
-            $('#copyResult').text('Copied!');
-            setTimeout(function () { $('#copyResult').text('Copy JSON'); }, 1200);
-          });
-        } else {
-          var textarea = document.createElement('textarea');
-          textarea.value = latestResultText;
-          textarea.style.position = 'fixed';
-          textarea.style.opacity = '0';
-          document.body.appendChild(textarea);
-          textarea.select();
-          document.execCommand('copy');
-          textarea.remove();
-          $('#copyResult').text('Copied!');
-          setTimeout(function () { $('#copyResult').text('Copy JSON'); }, 1200);
-        }
       });
     });
   </script>
