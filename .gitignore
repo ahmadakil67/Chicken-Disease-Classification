@@ -229,8 +229,17 @@ __pycache__/
 data/
 *.zip
 
-# Generated artifacts
-artifacts/
+# Ignore generated artifacts
+artifacts/*
+
+# Allow training directory
+!artifacts/training/
+
+# Ignore other training artifacts
+artifacts/training/*
+
+# Keep final trained model
+!artifacts/training/model.h5
 
 # Secrets
 .env
