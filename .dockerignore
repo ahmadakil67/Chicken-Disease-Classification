@@ -1,0 +1,13 @@
+.git
+.env
+__pycache__
+*.pyc
+.ipynb_checkpoints
+research
+logs
+inputImage.jpg
+
+artifacts/data_ingestion/
+artifacts/prepare_base_model/
+artifacts/training/*
+!artifacts/training/model.h5
